@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Page de la Note</h1>
+	<br>
+	<h4>Modifier la note</h4>
+	{{ form(edit_form) }}
+	<br>
+	<a href="{{ path('noteDelete', {'id': notation.id}) }}">Supprimer cette note</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+	<h1>Matière : {{skill.name}}</h1>
+    <p>Coefficient : {{ skill.coefficient }}</p>
+	<h2>Modifier la matière</h2>
+	{{ form(edit_form) }}
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SerieController!{% endblock %}
+
+{% block body %}
+
+    <h1>Les Matières</h1>
+
+    {% if skills is empty %}
+        <p>Il n'y aucune matières</p>
+    {% else %}
+        <p>Il y a {{ skills|length }} matières sur ce site.</p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Coefficient</th>
+                    <th>Informations</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for skill in skills %}
+                <tr>
+                    <td>
+                         {{ skill.name }}
+                    </td>
+                    <td>
+                        {{ skill.coefficient }}
+                    </td>
+                    <td>
+                        <a href="{{ path('skill', {'id': skill.id}) }}">
+                                Voir les détails
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('skillDelete', {'id': skill.id}) }}">X</a>
+                    </td>
+                </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+
+    <h2>Ajouter une Matière</h2>
+
+    {{ form_start(add_skill) }}
+        {{ form_row(add_skill.name) }}
+        {{ form_row(add_skill.coefficient) }}
+    {{ form_end(add_skill) }}
+    
+{% endblock %}
